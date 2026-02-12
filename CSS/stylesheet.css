@@ -29,8 +29,3 @@ li {
     float: left;
     padding: 33px 20px;
 }
-.header::after {
-    content: "";
-    display: block;
-    clear: both;
-}
