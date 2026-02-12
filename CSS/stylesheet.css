@@ -1,11 +1,11 @@
-body {background-color: #add8e6(253, 246, 198);}
+body {background-color: rgb(185, 220, 234);}
 h1   {
-    color: #808080(255, 134, 198);
+    color: rgb(32, 58, 69);
     font-size:40px;
     font-family:"serif";  
 }
 p    {
-    color:#000000(9, 0, 0);
+    color:rgb(0, 0, 0);
     font-size:20px;
     font-family:"serif"; 
 }
@@ -16,8 +16,8 @@ li {
     list-style: none;
 }
 .header {
-    background-color: #26d0c9(253, 220, 235);
-    color: #fff;
+    background-color: rgb(2, 52, 72);
+    color: rgb(255, 255, 255);
     height: 90px;
 }
 .header-logo {
