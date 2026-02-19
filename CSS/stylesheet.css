@@ -54,7 +54,7 @@ li {
 .copy-container h2 {
     font-size: 60px;
 }.copy-container span {
-    color: rgb(211, 240, 177);
+    color: rgb(117, 158, 174);
 }
 .contents {
     height: 500px;
@@ -83,7 +83,7 @@ input, textarea {
     margin-bottom: 30px;
     padding: 20px;
     font-size: 18px;
-    border: 1px solid rgb(57, 90, 115);
+    border: 1px solid rgb(117, 158, 174);
 }
 .contact-submit {
     background-color: rgb(135, 146, 151);
