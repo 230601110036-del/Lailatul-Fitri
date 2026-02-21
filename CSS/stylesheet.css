@@ -15,8 +15,12 @@ body {
 li {
     list-style: none;
 }
-.header {
-    background-color: rgb(117, 158, 174);
+.header { 
+    background: linear-gradient(
+        to bottom,
+        rgb(117, 158, 174),
+        rgb(63, 94, 251)
+    );
     color: rgb(255, 255, 255);
     height: 90px;
 }
