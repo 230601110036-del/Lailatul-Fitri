@@ -17,12 +17,13 @@ li {
 }
 .header { 
     background: linear-gradient(
-        to bottom,
-        rgb(117, 158, 174),
-        rgb(63, 94, 251)
+        90deg,
+        rgb(142, 84, 233),
+        rgb(71, 118, 230)
     );
     color: rgb(255, 255, 255);
     height: 90px;
+    box-shadow: 0 4px 12px rgb(0, 0, 0, 0.15);
 }
 .header-logo {
     float: left;
