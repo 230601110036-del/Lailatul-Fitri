@@ -74,6 +74,8 @@ li {
 .contents-item {
     float: left;
     margin-right: 40px;
+    background: rgb(255, 255, 255);
+    padding: 20px;
 }
 .contents-item img {
     width: 180px;
