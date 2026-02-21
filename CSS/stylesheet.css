@@ -18,7 +18,7 @@ li {
 .header { 
     background: linear-gradient(
         90deg,
-        rgb(20, 71, 92)
+        rgb(20, 71, 92),
         rgb(20, 71, 92)
     );
     color: rgb(255, 255, 255);
