@@ -86,6 +86,6 @@ input, textarea {
     border: 1px solid rgb(107, 152, 168);
 }
 .contact-submit {
-    background-color: rgb(135, 146, 151);
+    background-color: rgb(135, 146, 151), rgb(14, 51, 65);
     color: rgb(185, 220, 234);
 }
