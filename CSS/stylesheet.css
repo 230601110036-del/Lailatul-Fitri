@@ -75,6 +75,19 @@ li {
     float: left;
     margin-right: 40px;
 }
+.contents-item {
+    perspective: 1000px;
+}
+.contents-item img {
+    width: 150px; 
+    transition: all 0.4s ease;
+    transform: rotateY(15deg) rotateX(10deg);  
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.25); 
+}
+.contents-item:hover img {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.1);  
+    box-shadow: 0 35px 50px rgba(0, 0, 0, 0.35);  
+}
 .contents-item p {
     font-size: 24px;
     margin-top: 30px;
