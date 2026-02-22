@@ -62,7 +62,9 @@ li {
         rgb(107, 152, 168),
         rgb(70, 105, 120)
     );
+    background-clip: text;
     -webkit-background-clip: text;
+    color: transparent;
     -webkit-text-fill-color: transparent;
 
     text-shadow:
