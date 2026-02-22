@@ -56,6 +56,12 @@ li {
 .copy-container h1 {
     font-size: 140px;
     color: rgb(107, 152, 168);
+    text-shadow:
+        1px 1px 0 rgb(80, 120, 135),
+        2px 2px 0 rgb(80, 120, 135),
+        3px 3px 0 rgb(70, 105, 120),
+        4px 4px 0 rgb(70, 105, 120),
+        5px 5px 10px rgba(0,0,0,0.4);
 }
 .copy-container h2 {
     font-size: 60px;
