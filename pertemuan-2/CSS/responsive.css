@@ -43,7 +43,9 @@
   footer {
     text-align: center;
   }
+}
 
+@media (max-width: 670px) {
   .header-right {
     display: none;
   }
