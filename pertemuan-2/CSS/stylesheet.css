@@ -108,7 +108,7 @@ header {
   display: block;
 }
 
-.menu.icon {
+.menu-icon {
   display: none;
 }
 
@@ -187,15 +187,4 @@ footer p {
 
 footer {
   padding-top: 30px;
-}
-
-@media (max-width: 670px) {
-.item {
-  width: 25%;
-  }
-}
-@media (max-width: 1000px) {
-  .item {
-    width: 50%;
-  }
 }
