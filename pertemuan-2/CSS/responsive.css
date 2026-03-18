@@ -32,12 +32,12 @@
 
   .top-wrapper h1 {
     font-size: 24px;
-    line-height: 36px;
+    line-height: 34px;
   }
 
   .top-wrapper p {
     font-size: 14px;
-    line-height: 20px;
+    line-height: 16px;
   }
 
   footer {
@@ -55,58 +55,4 @@
     display: block;
   }
 
-}
-
-/* TABLET */
-@media (max-width: 1000px) {
-
-  .lesson {
-    width: 50%;
-    margin-bottom: 20px;
-  }
-
-  .header-right {
-    display: none; /* tombol login hilang */
-  }
-
-  .top-wrapper h1 {
-    font-size: 32px;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 670px) {
-
-  .lesson {
-    width: 100%;
-  }
-
-  .top-wrapper {
-    padding: 100px 0;
-  }
-
-  .top-wrapper h1 {
-    font-size: 24px;
-  }
-
-  .btn {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .btn-wrapper {
-    text-align: center;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 670px) {
-
-  .header-right {
-    display: none; /* tombol login disembunyikan */
-  }
-
-  .menu-icon {
-    display: block; /* icon muncul */
-  }
 }

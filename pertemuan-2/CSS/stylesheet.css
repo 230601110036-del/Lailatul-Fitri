@@ -12,8 +12,8 @@ a {
 }
 
 .container {
-  width: 100%;
   max-width: 1170px;
+  width: 100%;
   padding: 0 15px;
   margin: 0 auto;
 }
@@ -108,14 +108,10 @@ header {
   display: block;
 }
 
-.menu-icon {
-  float: right;
-  font-size: 25px;
-  color: white;
+.menu.icon {
   display: none;
-  line-height: 65px;
-  cursor: pointer;
 }
+
 .lesson-wrapper {
   height: 500px;
   padding-bottom: 80px;
