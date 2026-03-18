@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Lucida Grande";
@@ -8,7 +12,8 @@ a {
 }
 
 .container {
-  width: 1170px;
+  width: 100%;
+  max-width: 1170px;
   padding: 0 15px;
   margin: 0 auto;
 }
@@ -103,6 +108,14 @@ header {
   display: block;
 }
 
+.menu-icon {
+  float: right;
+  font-size: 25px;
+  color: white;
+  display: none;
+  line-height: 65px;
+  cursor: pointer;
+}
 .lesson-wrapper {
   height: 500px;
   padding-bottom: 80px;
@@ -179,3 +192,4 @@ footer p {
 footer {
   padding-top: 30px;
 }
+
