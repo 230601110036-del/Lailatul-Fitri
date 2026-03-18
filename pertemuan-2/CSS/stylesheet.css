@@ -150,6 +150,12 @@ header {
   color: white;
 }
 
+.lessons::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .txt-contents {
   width: 80%;
   display: inline-block;
