@@ -110,6 +110,10 @@ header {
 
 .menu-icon {
   display: none;
+  float: right;
+  font-size: 25px;
+  color: white;
+  line-height: 65px;
 }
 
 .lesson-wrapper {
