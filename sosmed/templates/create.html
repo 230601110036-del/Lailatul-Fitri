@@ -5,14 +5,28 @@
 {% endblock title %}
 
 {% block contents %}
-<h1>{{ page_title }}</h1>
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card shadow-sm border-0">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">{{ page_title }}</h4>
+      </div>
 
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ akun_form.as_table }}
-    </table>
-    <button type="submit">Kirim</button>
-</form>
+      <div class="card-body">
+        <form method="POST">
+          {% csrf_token %}
 
+          <table class="table">
+            {{ akun_form.as_table }}
+          </table>
+
+          <div class="d-flex justify-content-between">
+            <a href="{% url 'sosmed:list' %}" class="btn btn-secondary">Kembali</a>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock contents %}
