@@ -34,9 +34,8 @@
             <td>{{ akun.nama_belakang }}</td>
             <td>@{{ akun.username }}</td>
             <td class="text-center">
-              <a class="btn btn-warning btn-sm" href="#">Ubah</a>
-              <a class="btn btn-danger btn-sm" href="#">Hapus</a>
-            </td>
+              <a class="btn btn-warning btn-sm" href="{% url 'sosmed:update' akun.id %}">Ubah</a>
+              <a class="btn btn-danger btn-sm" href="{% url 'sosmed:delete' akun.id %}">Hapus</a>
           </tr>
           {% empty %}
           <tr>
