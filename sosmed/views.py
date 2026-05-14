@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Instagram
 from .forms import InstagramForm
 
@@ -9,6 +10,7 @@ def create(request):
     if request.method == 'POST':
         if akun_form.is_valid():
             akun_form.save()
+            messages.success(request, '🎉 Akun berhasil ditambahkan')
             return redirect('sosmed:list')
 
     context = {
@@ -48,6 +50,7 @@ def update(request, update_id):
     if request.method == 'POST':
         if akun_form.is_valid():
             akun_form.save()
+            messages.success(request, '✏️ Data berhasil diupdate')
             return redirect('sosmed:list')
 
     context = {
@@ -59,4 +62,5 @@ def update(request, update_id):
 
 def delete(request, delete_id):
     Instagram.objects.filter(id=delete_id).delete()
+    messages.error(request, '🗑️ Data berhasil dihapus')
     return redirect('sosmed:list')

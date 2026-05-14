@@ -138,6 +138,44 @@
     label {
       font-weight: 800;
     }
+
+    .custom-toast {
+  min-width: 320px;
+  padding: 18px 24px;
+  border-radius: 24px;
+  color: white;
+  font-weight: 700;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+
+  animation: slideIn .5s ease;
+}
+
+.toast-success {
+  background: rgba(15, 23, 42, .92);
+  border-left: 8px solid #22d3ee;
+}
+
+.toast-error {
+  background: rgba(127, 29, 29, .92);
+  border-left: 8px solid #fb7185;
+}
+
+.toast-content {
+  font-size: 18px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
   </style>
 </head>
 
@@ -153,6 +191,30 @@
     </div>
   </nav>
 
+  <div class="toast-container position-fixed top-0 end-0 p-4"
+     style="z-index:9999;">
+
+  {% if messages %}
+    {% for message in messages %}
+
+      <div class="custom-toast show mb-3
+        {% if message.tags == 'success' %}
+          toast-success
+        {% elif message.tags == 'error' %}
+          toast-error
+        {% endif %}
+      ">
+
+        <div class="toast-content">
+          {{ message }}
+        </div>
+
+      </div>
+
+    {% endfor %}
+  {% endif %}
+
+</div>
   <main class="container page-shell">
     {% block contents %}
     {% endblock contents %}
