@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.db.models import Q
 from .models import Instagram
 from .forms import InstagramForm
 
@@ -22,13 +23,17 @@ def create(request):
 
 
 def list_instagram(request):
-    keyword = request.GET.get('q')
+    keyword = request.GET.get('q', '')
     platform = request.GET.get('platform', 'instagram')
 
     semua_akun = Instagram.objects.filter(platform=platform)
 
     if keyword:
-        semua_akun = semua_akun.filter(username__icontains=keyword)
+        semua_akun = semua_akun.filter(
+            Q(username__icontains=keyword) |
+            Q(nama_depan__icontains=keyword) |
+            Q(nama_belakang__icontains=keyword)
+        )
 
     context = {
         'page_title': 'Sosial Media',
