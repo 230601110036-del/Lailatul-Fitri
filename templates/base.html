@@ -51,7 +51,9 @@
       top: 24px;
       left: -340px;
       width: 300px;
-      height: calc(100vh - 48px);
+      height: auto;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
       z-index: 2000;
       transition: .35s ease;
       background: rgba(255,255,255,.96);
@@ -659,6 +661,10 @@
       .sidebar {
         width: 280px;
         left: -320px;
+        top: 14px;
+        height: auto;
+        max-height: calc(100vh - 28px);
+        overflow-y: auto;
       }
 
       .sidebar.show {
