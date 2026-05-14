@@ -27,7 +27,9 @@
   <main class="dashboard-content">
     <section class="top-hero">
       <div>
-        <button class="menu-btn">☰</button>
+        <button class="menu-btn" onclick="toggleSidebar()">
+          ☰
+        </button>
         <h1>Daftar <span>Akun</span></h1>
         <p>Kelola semua akun sosial media Anda</p>
       </div>
@@ -60,19 +62,27 @@
     </section>
 
     <section class="toolbar">
-      <div class="platform-switch">
-        <span>Pilih Platform</span>
-        <button class="active">📸 Instagram</button>
-        <button>🎵 TikTok</button>
-      </div>
 
-      <form method="GET" class="search-box">
-        <span>🔍</span>
-        <input type="text" name="q" placeholder="Cari akun Instagram..." value="{{ keyword|default:'' }}">
-      </form>
+  <div class="platform-switch">
+    <button class="active">📸 Instagram</button>
+    <button>🎵 TikTok</button>
+  </div>
 
-      <a href="{% url 'sosmed:create' %}" class="add-btn">＋ Tambah Akun Instagram</a>
-    </section>
+  <form method="GET" class="search-box">
+    <span>🔍</span>
+
+    <input
+      type="text"
+      name="q"
+      placeholder="Cari akun Instagram..."
+      value="{{ keyword|default:'' }}">
+  </form>
+
+  <a href="{% url 'sosmed:create' %}" class="add-btn">
+    ＋ Tambah Akun
+  </a>
+
+</section>
 
     <section class="account-grid">
       {% for akun in semua_akun %}
