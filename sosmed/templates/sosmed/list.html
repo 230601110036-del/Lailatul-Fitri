@@ -4,7 +4,7 @@
 
 {% block contents %}
 <div class="app-layout">
-
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
   <aside class="sidebar">
     <div class="brand-box">
       <div class="brand-icon">🔗</div>
@@ -27,9 +27,7 @@
   <main class="dashboard-content">
     <section class="top-hero">
       <div>
-        <button class="menu-btn" onclick="toggleSidebar()">
-          ☰
-        </button>
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
         <h1>Daftar <span>Akun</span></h1>
         <p>Kelola semua akun sosial media Anda</p>
       </div>
