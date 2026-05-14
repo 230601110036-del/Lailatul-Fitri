@@ -1,12 +1,20 @@
 from django.db import models
 
-# Create your models here.
 
-# usages
 class Instagram(models.Model):
-    nama_depan = models.CharField(max_length=10)
-    nama_belakang = models.CharField(max_length=10)
-    username = models.CharField(max_length=10)
+    PLATFORM_CHOICES = [
+        ('instagram', 'Instagram'),
+        ('tiktok', 'TikTok'),
+    ]
+
+    nama_depan = models.CharField(max_length=100)
+    nama_belakang = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
+    platform = models.CharField(
+        max_length=20,
+        choices=PLATFORM_CHOICES,
+        default='instagram'
+    )
 
     def __str__(self):
-        return "{}-{}".format(self.id, self.username)
+        return f"{self.id}. {self.username} - {self.platform}"

@@ -7,14 +7,19 @@
 
   <div class="form-hero">
     <h1>{{ page_title }}</h1>
-    <p>Isi data akun Instagram dengan rapi dan modern.</p>
+    <p>Isi data akun sosial media dengan rapi dan modern.</p>
   </div>
 
   <div class="form-wrapper">
+
     <div class="form-left">
-      <div class="big-icon">📸</div>
-      <h2>Instagram Profile</h2>
-      <p>Kelola profil sosial media dengan tampilan yang lebih profesional.</p>
+      <div class="big-icon">🔗</div>
+
+      <h2>Social Media Profile</h2>
+
+      <p>
+        Pilih platform Instagram atau TikTok, lalu simpan data akunmu dengan tampilan dashboard modern.
+      </p>
     </div>
 
     <div class="form-right">
@@ -27,15 +32,24 @@
         <label>Nama Belakang</label>
         {{ akun_form.nama_belakang }}
 
-        <label>Username Instagram</label>
+        <label>Username</label>
         {{ akun_form.username }}
 
+        <label>Platform</label>
+        {{ akun_form.platform }}
+
         <div class="form-actions">
-          <a href="{% url 'sosmed:list' %}" class="cancel-btn">Batal</a>
-          <button type="submit" class="save-btn">Simpan</button>
+          <a href="{% url 'sosmed:list' %}" class="cancel-btn">
+            Batal
+          </a>
+
+          <button type="submit" class="save-btn">
+            Simpan
+          </button>
         </div>
       </form>
     </div>
+
   </div>
 
 </div>

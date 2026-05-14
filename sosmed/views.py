@@ -14,40 +14,37 @@ def create(request):
             return redirect('sosmed:list')
 
     context = {
-        "page_title": "Tambah akun",
+        "page_title": "Tambah Akun",
         "akun_form": akun_form,
     }
 
     return render(request, 'sosmed/create.html', context)
 
+
 def list_instagram(request):
     keyword = request.GET.get('q')
+    platform = request.GET.get('platform', 'instagram')
+
+    semua_akun = Instagram.objects.filter(platform=platform)
 
     if keyword:
-        semua_akun = Instagram.objects.filter(username__icontains=keyword)
-    else:
-        semua_akun = Instagram.objects.all()
+        semua_akun = semua_akun.filter(username__icontains=keyword)
 
     context = {
         'page_title': 'Sosial Media',
         'semua_akun': semua_akun,
         'keyword': keyword,
+        'platform': platform,
     }
 
     return render(request, 'sosmed/list.html', context)
 
+
 def update(request, update_id):
     akun_update = Instagram.objects.get(id=update_id)
 
-    data = {
-        'nama_depan': akun_update.nama_depan,
-        'nama_belakang': akun_update.nama_belakang,
-        'username': akun_update.username,
-    }
-
     akun_form = InstagramForm(
         request.POST or None,
-        initial=data,
         instance=akun_update
     )
 
@@ -58,11 +55,12 @@ def update(request, update_id):
             return redirect('sosmed:list')
 
     context = {
-        "page_title": "Update akun",
+        "page_title": "Update Akun",
         "akun_form": akun_form,
     }
 
     return render(request, 'sosmed/create.html', context)
+
 
 def delete(request, delete_id):
     Instagram.objects.filter(id=delete_id).delete()

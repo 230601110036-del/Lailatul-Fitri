@@ -1,7 +1,7 @@
 from django import forms
 from .models import Instagram
 
-# usages
+
 class InstagramForm(forms.ModelForm):
     class Meta:
         model = Instagram
@@ -9,4 +9,20 @@ class InstagramForm(forms.ModelForm):
             'nama_depan',
             'nama_belakang',
             'username',
+            'platform',
         ]
+
+        widgets = {
+            'nama_depan': forms.TextInput(attrs={
+                'placeholder': 'Masukkan nama depan'
+            }),
+            'nama_belakang': forms.TextInput(attrs={
+                'placeholder': 'Masukkan nama belakang'
+            }),
+            'username': forms.TextInput(attrs={
+                'placeholder': 'Masukkan username'
+            }),
+            'platform': forms.Select(attrs={
+                'class': 'platform-select'
+            }),
+        }

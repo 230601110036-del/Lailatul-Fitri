@@ -4,7 +4,9 @@
 
 {% block contents %}
 <div class="app-layout">
+
   <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
   <aside class="sidebar">
     <div class="brand-box">
       <div class="brand-icon">🔗</div>
@@ -15,19 +17,24 @@
     <a class="side-menu" href="{% url 'sosmed:create' %}">➕ Tambah Akun</a>
 
     <div class="platform-title">PLATFORM</div>
-    <div class="platform-item">📸 Instagram</div>
-    <div class="platform-item">🎵 TikTok</div>
 
-    <div class="sidebar-card">
-      <div class="bell">🔔</div>
-      <p>Kelola akun dengan mudah dan aman ✨</p>
+    <a class="platform-item" href="?platform=instagram">📸 Instagram</a>
+    <a class="platform-item" href="?platform=tiktok">🎵 TikTok</a>
+
+    <div class="platform-title">PENGATURAN</div>
+
+    <div class="setting-box">
+      <p class="fw-bold mb-3">Mode Tampilan</p>
+      <button onclick="toggleTheme()">🌙 Gelap / Terang</button>
     </div>
   </aside>
 
   <main class="dashboard-content">
+
     <section class="top-hero">
       <div>
         <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
         <h1>Daftar <span>Akun</span></h1>
         <p>Kelola semua akun sosial media Anda</p>
       </div>
@@ -41,12 +48,25 @@
 
     <section class="stats-grid">
       <div class="stat-box">
-        <div class="stat-logo">📸</div>
+        <div class="stat-logo">
+          {% if platform == 'tiktok' %}
+            🎵
+          {% else %}
+            📸
+          {% endif %}
+        </div>
+
         <div>
           <h2>{{ semua_akun|length }}</h2>
-          <p>Total Akun Instagram</p>
+          <p>
+            Total Akun
+            {% if platform == 'tiktok' %}
+              TikTok
+            {% else %}
+              Instagram
+            {% endif %}
+          </p>
         </div>
-        <div class="mini-chart"></div>
       </div>
 
       <div class="stat-box">
@@ -55,36 +75,47 @@
           <h2>Aktif</h2>
           <p>Status Data</p>
         </div>
-        <div class="mini-chart"></div>
       </div>
     </section>
 
     <section class="toolbar">
 
-  <div class="platform-switch">
-    <button class="active">📸 Instagram</button>
-    <button>🎵 TikTok</button>
-  </div>
+      <div class="platform-switch">
+        <a href="?platform=instagram"
+           class="{% if platform == 'instagram' %}active{% endif %}">
+          📸 Instagram
+        </a>
 
-  <form method="GET" class="search-box">
-    <span>🔍</span>
+        <a href="?platform=tiktok"
+           class="{% if platform == 'tiktok' %}active{% endif %}">
+          🎵 TikTok
+        </a>
+      </div>
 
-    <input
-      type="text"
-      name="q"
-      placeholder="Cari akun Instagram..."
-      value="{{ keyword|default:'' }}">
-  </form>
+      <form method="GET" class="search-box">
+        <span>🔍</span>
 
-  <a href="{% url 'sosmed:create' %}" class="add-btn">
-    ＋ Tambah Akun
-  </a>
+        <input type="hidden" name="platform" value="{{ platform }}">
 
-</section>
+        <input
+          type="text"
+          name="q"
+          placeholder="Cari akun..."
+          value="{{ keyword|default:'' }}">
+      </form>
+
+      <a href="{% url 'sosmed:create' %}" class="add-btn">
+        ＋ Tambah Akun
+      </a>
+
+    </section>
 
     <section class="account-grid">
+
       {% for akun in semua_akun %}
+
       <div class="account-card-new">
+
         <div class="profile-circle">
           {{ akun.nama_depan|first|upper }}
         </div>
@@ -92,32 +123,72 @@
         <div class="account-info">
           <h4>{{ akun.nama_depan }} {{ akun.nama_belakang }}</h4>
           <p>@{{ akun.username }}</p>
+
+          <span class="platform-badge">
+            {% if akun.platform == 'tiktok' %}
+              🎵 TikTok
+            {% else %}
+              📸 Instagram
+            {% endif %}
+          </span>
         </div>
 
         <div class="dropdown">
           <button class="dots" data-bs-toggle="dropdown">⋮</button>
+
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item" href="{% url 'sosmed:update' akun.id %}">✏️ Ubah</a>
+              <a class="dropdown-item"
+                 href="{% url 'sosmed:update' akun.id %}">
+                ✏️ Ubah
+              </a>
             </li>
+
             <li>
-              <a class="dropdown-item text-danger" onclick="return confirmDelete()" href="{% url 'sosmed:delete' akun.id %}">🗑️ Hapus</a>
+              <a class="dropdown-item text-danger"
+                 onclick="return confirmDelete()"
+                 href="{% url 'sosmed:delete' akun.id %}">
+                🗑️ Hapus
+              </a>
             </li>
           </ul>
         </div>
+
       </div>
+
       {% empty %}
+
       <div class="empty-state">
         <h3>📭 Belum ada akun</h3>
-        <p>Tambahkan akun Instagram pertama kamu.</p>
-        <a href="{% url 'sosmed:create' %}" class="add-btn">Tambah Akun Pertama</a>
+
+        <p>
+          Belum ada akun
+          {% if platform == 'tiktok' %}
+            TikTok
+          {% else %}
+            Instagram
+          {% endif %}
+          yang tersimpan.
+        </p>
+
+        <a href="{% url 'sosmed:create' %}" class="add-btn">
+          Tambah Akun Pertama
+        </a>
       </div>
+
       {% endfor %}
+
     </section>
 
     <div class="footer-info">
-      Menampilkan {{ semua_akun|length }} akun Instagram
+      Menampilkan {{ semua_akun|length }} akun
+      {% if platform == 'tiktok' %}
+        TikTok
+      {% else %}
+        Instagram
+      {% endif %}
     </div>
+
   </main>
 
 </div>
