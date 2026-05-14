@@ -5,58 +5,143 @@
 {% endblock title %}
 
 {% block contents %}
-<div class="ig-hero mb-5 text-center">
-  <span class="badge bg-light text-danger mb-3 px-3 py-2 rounded-pill">
-    ✨ Instagram Form
-  </span>
-  <h1 class="display-5 fw-bold mb-3">{{ page_title }}</h1>
-  <p class="fs-5 opacity-75 mb-0">
-    Buat data akun Instagram dengan tampilan yang lebih aesthetic.
-  </p>
-</div>
 
-<div class="row justify-content-center">
-  <div class="col-lg-8">
-    <div class="ig-card">
-      <div class="p-4 p-md-5">
-        <div class="text-center mb-4">
-          <div class="avatar-ring mx-auto mb-3" style="width:86px;height:86px;">
-            <div class="avatar-inner fs-2">◎</div>
-          </div>
-          <h3 class="fw-bold mb-1">Profile Information</h3>
-          <p class="text-muted mb-0">Lengkapi informasi akun sosial media.</p>
+<section class="ig-hero mb-5">
+
+  <div class="row align-items-center">
+
+    <div class="col-lg-7">
+
+      <span class="badge bg-light text-danger px-3 py-2 rounded-pill mb-3">
+        ✨ Instagram Profile Form
+      </span>
+
+      <h1 class="display-4 fw-bold mb-3">
+        {{ page_title }}
+      </h1>
+
+      <p class="fs-5 opacity-75">
+        Tambahkan data akun Instagram dengan tampilan modern dan aesthetic.
+      </p>
+
+    </div>
+
+    <div class="col-lg-5 text-center mt-5 mt-lg-0">
+
+      <div class="floating-preview">
+
+        <div class="avatar-ring mx-auto preview-big">
+          <div class="avatar-inner">◎</div>
         </div>
 
-        <form method="POST">
-          {% csrf_token %}
+        <h4 class="fw-bold mt-4 mb-1">
+          Instagram Profile
+        </h4>
 
-          <div class="mb-4">
-            <label class="form-label">Nama Depan</label>
-            {{ akun_form.nama_depan }}
-          </div>
+        <p class="opacity-75">@social_media</p>
 
-          <div class="mb-4">
-            <label class="form-label">Nama Belakang</label>
-            {{ akun_form.nama_belakang }}
-          </div>
+        <div class="preview-badges">
 
-          <div class="mb-4">
-            <label class="form-label">Username Instagram</label>
-            {{ akun_form.username }}
-          </div>
+          <span>📸 Creator</span>
+          <span>🚀 Active</span>
 
-          <div class="d-flex justify-content-between mt-5">
-            <a href="{% url 'sosmed:list' %}" class="btn btn-secondary btn-lg">
-              ← Kembali
-            </a>
+        </div>
 
-            <button type="submit" class="btn btn-ig btn-lg">
-              💾 Simpan Akun
-            </button>
-          </div>
-        </form>
       </div>
+
     </div>
+
   </div>
+
+</section>
+
+<div class="row justify-content-center">
+
+  <div class="col-lg-10">
+
+    <div class="form-card-modern">
+
+      <div class="form-side-decoration"></div>
+
+      <div class="row g-0">
+
+        <div class="col-lg-5">
+
+          <div class="left-panel">
+
+            <span class="mini-badge">
+              Social Dashboard
+            </span>
+
+            <h2 class="fw-bold mt-4 mb-3">
+              Create Beautiful Profile
+            </h2>
+
+            <p class="opacity-75">
+              Form modern dengan desain glassmorphism dan nuansa Instagram modern.
+            </p>
+
+            <div class="info-box mt-5">
+
+              <div>✨ Modern UI</div>
+              <div>📱 Instagram Style</div>
+              <div>🚀 Responsive Design</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-7">
+
+          <div class="right-panel">
+
+            <form method="POST">
+
+              {% csrf_token %}
+
+              <div class="mb-4">
+                <label class="form-label">Nama Depan</label>
+                {{ akun_form.nama_depan }}
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Nama Belakang</label>
+                {{ akun_form.nama_belakang }}
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Username Instagram</label>
+                {{ akun_form.username }}
+              </div>
+
+              <div class="d-flex justify-content-between mt-5">
+
+                <a href="{% url 'sosmed:list' %}"
+                   class="btn btn-secondary btn-lg px-4">
+                  ← Kembali
+                </a>
+
+                <button type="submit"
+                        class="btn btn-ig btn-lg px-5">
+                  💾 Simpan
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
+
 {% endblock contents %}
