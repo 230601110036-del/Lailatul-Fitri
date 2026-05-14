@@ -767,7 +767,10 @@
       }
 
       .top-hero {
-        display: block;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
         margin-bottom: 24px;
       }
 
@@ -780,7 +783,7 @@
       }
 
       .top-hero h1 {
-        font-size: 44px;
+        font-size: 52px;
         line-height: 1;
         margin: 0 0 12px;
       }
@@ -793,25 +796,26 @@
       }
 
       .hero-icons {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1.2fr 1fr;
+        display: flex;
         align-items: center;
-        gap: 12px;
-        margin-top: 18px;
+        justify-content: flex-end;
+        gap: 10px;
+
+        margin-top: 0;
+        flex-shrink: 0;
       }
 
       .float-icon {
-        width: 82px;
-        height: 82px;
+        width: 62px;
+        height: 62px;
         border-radius: 24px;
         font-size: 34px;
         justify-self: center;
       }
 
       .float-icon.user {
-        width: 118px;
-        height: 118px;
+        width: 92pxpx;
+        height: 92px;
         font-size: 52px;
       }
 
