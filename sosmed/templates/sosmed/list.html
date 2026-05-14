@@ -5,18 +5,22 @@
 {% endblock title %}
 
 {% block contents %}
-<div class="hero-card mb-5">
+<div class="ig-hero mb-5">
   <div class="row align-items-center position-relative">
     <div class="col-lg-8">
-      <span class="badge bg-light text-primary mb-3 px-3 py-2">📱 Instagram Account Manager</span>
-      <h1 class="display-5 fw-bold mb-3">Kelola Akun Sosial Media</h1>
+      <span class="badge bg-light text-danger mb-3 px-3 py-2 rounded-pill">
+        ✨ Instagram Vibes Dashboard
+      </span>
+      <h1 class="display-4 fw-bold mb-3">
+        Kelola Akun Sosial Media
+      </h1>
       <p class="fs-5 opacity-75 mb-0">
-        Dashboard modern untuk menambah, mengubah, dan menghapus data akun Instagram.
+        Simpan, ubah, dan atur akun Instagram dengan tampilan modern ala social media.
       </p>
     </div>
 
     <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-      <a class="btn btn-light btn-lg px-4 py-3" href="{% url 'sosmed:create' %}">
+      <a class="btn btn-soft btn-lg px-5 py-3" href="{% url 'sosmed:create' %}">
         + Tambah Akun
       </a>
     </div>
@@ -25,42 +29,54 @@
 
 <div class="row g-4 mb-5">
   <div class="col-md-4">
-    <div class="stat-card">
-      <div class="fs-1 mb-2">👥</div>
-      <p class="mb-1 opacity-75">Total Akun</p>
-      <h2 class="fw-bold mb-0">{{ semua_akun|length }}</h2>
+    <div class="ig-stat">
+      <div class="d-flex align-items-center gap-3">
+        <div class="ig-icon">👥</div>
+        <div>
+          <p class="text-muted mb-1">Total Akun</p>
+          <h2 class="fw-bold mb-0">{{ semua_akun|length }}</h2>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="stat-card">
-      <div class="fs-1 mb-2">⚡</div>
-      <p class="mb-1 opacity-75">Status</p>
-      <h2 class="fw-bold mb-0">Aktif</h2>
+    <div class="ig-stat">
+      <div class="d-flex align-items-center gap-3">
+        <div class="ig-icon">💬</div>
+        <div>
+          <p class="text-muted mb-1">Kategori</p>
+          <h2 class="fw-bold mb-0">Social</h2>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="stat-card">
-      <div class="fs-1 mb-2">🚀</div>
-      <p class="mb-1 opacity-75">Platform</p>
-      <h2 class="fw-bold mb-0">Instagram</h2>
+    <div class="ig-stat">
+      <div class="d-flex align-items-center gap-3">
+        <div class="ig-icon">🚀</div>
+        <div>
+          <p class="text-muted mb-1">Platform</p>
+          <h2 class="fw-bold mb-0">Instagram</h2>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="glass-card">
+<div class="ig-card">
   <div class="p-4 p-md-5 border-bottom">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-      <div>
-        <h2 class="fw-bold mb-1">{{ page_title }}</h2>
-        <p class="text-muted mb-0">Daftar akun yang sudah tersimpan di database.</p>
-      </div>
+    <div>
+      <span class="badge rounded-pill text-bg-light mb-2">📋 Account List</span>
+      <h2 class="fw-bold mb-1">{{ page_title }}</h2>
+      <p class="text-muted mb-0">Daftar akun yang sudah tersimpan di database.</p>
+    </div>
   </div>
 
   <div class="p-4">
     <div class="table-responsive">
-      <table class="table table-modern table-hover align-middle mb-0">
+      <table class="table table-ig table-hover align-middle mb-0">
         <thead>
           <tr>
             <th>No</th>
@@ -77,23 +93,24 @@
             <td class="fw-bold">{{ forloop.counter }}</td>
 
             <td>
-              <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold"
-                   style="width:48px; height:48px; background:linear-gradient(135deg,#2563eb,#7c3aed);">
-                {{ akun.nama_depan|first|upper }}
+              <div class="avatar-ring">
+                <div class="avatar-inner">
+                  {{ akun.nama_depan|first|upper }}
+                </div>
               </div>
             </td>
 
             <td>
               <div class="fw-bold">{{ akun.nama_depan }} {{ akun.nama_belakang }}</div>
-              <small class="text-muted">Instagram account</small>
+              <small class="text-muted">Instagram profile</small>
             </td>
 
             <td>
-              <span class="badge-username">@{{ akun.username }}</span>
+              <span class="username-pill">@{{ akun.username }}</span>
             </td>
 
             <td class="text-center">
-              <a class="btn btn-glow btn-sm me-2"
+              <a class="btn btn-warning btn-sm me-2"
                  href="{% url 'sosmed:update' akun.id %}">
                 ✏️ Ubah
               </a>
@@ -111,7 +128,7 @@
               <div class="fs-1 mb-3">📭</div>
               <h4 class="fw-bold">Belum ada akun</h4>
               <p class="text-muted">Tambahkan akun Instagram pertama kamu.</p>
-              <a class="btn btn-primary" href="{% url 'sosmed:create' %}">
+              <a class="btn btn-ig" href="{% url 'sosmed:create' %}">
                 Tambah Akun Pertama
               </a>
             </td>

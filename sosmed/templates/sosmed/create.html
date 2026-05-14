@@ -5,18 +5,28 @@
 {% endblock title %}
 
 {% block contents %}
-<div class="hero-card mb-5 text-center">
-  <span class="badge bg-light text-primary mb-3 px-3 py-2">✨ Form Data</span>
+<div class="ig-hero mb-5 text-center">
+  <span class="badge bg-light text-danger mb-3 px-3 py-2 rounded-pill">
+    ✨ Instagram Form
+  </span>
   <h1 class="display-5 fw-bold mb-3">{{ page_title }}</h1>
   <p class="fs-5 opacity-75 mb-0">
-    Isi data akun Instagram dengan benar dan rapi.
+    Buat data akun Instagram dengan tampilan yang lebih aesthetic.
   </p>
 </div>
 
 <div class="row justify-content-center">
   <div class="col-lg-8">
-    <div class="glass-card">
+    <div class="ig-card">
       <div class="p-4 p-md-5">
+        <div class="text-center mb-4">
+          <div class="avatar-ring mx-auto mb-3" style="width:86px;height:86px;">
+            <div class="avatar-inner fs-2">◎</div>
+          </div>
+          <h3 class="fw-bold mb-1">Profile Information</h3>
+          <p class="text-muted mb-0">Lengkapi informasi akun sosial media.</p>
+        </div>
+
         <form method="POST">
           {% csrf_token %}
 
@@ -40,8 +50,8 @@
               ← Kembali
             </a>
 
-            <button type="submit" class="btn btn-primary btn-lg">
-              💾 Simpan
+            <button type="submit" class="btn btn-ig btn-lg">
+              💾 Simpan Akun
             </button>
           </div>
         </form>
