@@ -767,51 +767,62 @@
       }
 
       .top-hero {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 28px;
+        display: flex;
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 22px;
+
+        margin-bottom: 30px;
       }
 
       .top-hero-left {
-        min-width: 0;
+        width: 100%;
       }
 
       .top-hero h1 {
-        font-size: 58px;
-        line-height: .95;
-        margin: 0 0 10px;
-        letter-spacing: -2px;
+        font-size: 64px;
+        line-height: .92;
+
+        margin: 0 0 14px;
+
+        letter-spacing: -3px;
       }
 
       .top-hero p {
-        font-size: 17px;
+        font-size: 18px;
         line-height: 1.5;
-        margin: 0;
-        max-width: 220px;
+
+        max-width: 100%;
       }
 
       .hero-icons {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        width: 100%;
 
-        margin: 0;
-        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 16px;
+
+        margin-top: 0;
       }
 
       .float-icon {
-        width: 58px;
-        height: 58px;
-        border-radius: 20px;
-        font-size: 28px;
+        width: 78px;
+        height: 78px;
+
+        border-radius: 24px;
+
+        font-size: 34px;
       }
 
       .float-icon.user {
-        width: 82px;
-        height: 82px;
-        font-size: 44px;
+        width: 120px;
+        height: 120px;
+
+        font-size: 58px;
       }
 
       .menu-btn {
