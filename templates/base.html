@@ -767,11 +767,51 @@
       }
 
       .top-hero {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .top-hero-left {
+        min-width: 0;
+      }
+
+      .top-hero h1 {
+        font-size: 58px;
+        line-height: .95;
+        margin: 0 0 10px;
+        letter-spacing: -2px;
+      }
+
+      .top-hero p {
+        font-size: 17px;
+        line-height: 1.5;
+        margin: 0;
+        max-width: 220px;
+      }
+
+      .hero-icons {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         gap: 10px;
-        margin-bottom: 24px;
+
+        margin: 0;
+        flex-shrink: 0;
+      }
+
+      .float-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 20px;
+        font-size: 28px;
+      }
+
+      .float-icon.user {
+        width: 82px;
+        height: 82px;
+        font-size: 44px;
       }
 
       .menu-btn {
@@ -780,43 +820,6 @@
         border-radius: 18px;
         font-size: 26px;
         margin-bottom: 30px;
-      }
-
-      .top-hero h1 {
-        font-size: 52px;
-        line-height: 1;
-        margin: 0 0 12px;
-      }
-
-      .top-hero p {
-        font-size: 17px;
-        line-height: 1.5;
-        max-width: 300px;
-        margin-bottom: 26px;
-      }
-
-      .hero-icons {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 10px;
-
-        margin-top: 0;
-        flex-shrink: 0;
-      }
-
-      .float-icon {
-        width: 62px;
-        height: 62px;
-        border-radius: 24px;
-        font-size: 34px;
-        justify-self: center;
-      }
-
-      .float-icon.user {
-        width: 92pxpx;
-        height: 92px;
-        font-size: 52px;
       }
 
       .stats-grid {
