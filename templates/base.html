@@ -11,192 +11,451 @@
   <style>
     * {
       font-family: "Segoe UI", Arial, sans-serif;
+      box-sizing: border-box;
     }
 
     body {
       min-height: 100vh;
+      margin: 0;
       background:
-        radial-gradient(circle at 10% 10%, rgba(255, 214, 10, .35), transparent 25%),
-        radial-gradient(circle at 90% 15%, rgba(253, 29, 29, .35), transparent 28%),
-        radial-gradient(circle at 20% 90%, rgba(131, 58, 180, .45), transparent 30%),
-        linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-      background-attachment: fixed;
-      color: #1f2937;
+        radial-gradient(circle at top left, rgba(96,165,250,.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,.25), transparent 30%),
+        #f4f8ff;
+      color: #0f172a;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,.18);
-      backdrop-filter: blur(24px);
-      z-index: -1;
+    .app-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+      gap: 30px;
+      padding: 24px;
     }
 
-    .ig-navbar {
-      background: rgba(255,255,255,.82);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.6);
-      box-shadow: 0 10px 35px rgba(0,0,0,.08);
-    }
-
-    .brand-gradient {
-      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 900;
-      letter-spacing: -.5px;
-    }
-
-    .page-shell {
-      padding-top: 42px;
-      padding-bottom: 70px;
-    }
-
-    .ig-hero {
-      position: relative;
-      overflow: hidden;
-      border-radius: 36px;
-      padding: 46px;
-      color: white;
-      background:
-        radial-gradient(circle at top right, rgba(255,255,255,.35), transparent 25%),
-        linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-      box-shadow: 0 30px 80px rgba(131, 58, 180, .35);
-    }
-
-    .ig-hero::after {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      border: 38px solid rgba(255,255,255,.13);
-      right: -70px;
-      top: -60px;
-    }
-
-    .ig-card {
-      background: rgba(255,255,255,.9);
-      border: 1px solid rgba(255,255,255,.8);
-      border-radius: 32px;
-      box-shadow: 0 28px 70px rgba(31,41,55,.18);
-      overflow: hidden;
-    }
-
-    .ig-stat {
+    .sidebar {
+      background: rgba(255,255,255,.95);
       border-radius: 28px;
-      padding: 26px;
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(255,255,255,.8);
-      box-shadow: 0 22px 55px rgba(31,41,55,.14);
-      transition: .25s;
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(30,64,175,.12);
+      position: sticky;
+      top: 24px;
+      height: calc(100vh - 48px);
     }
 
-    .ig-stat:hover {
-      transform: translateY(-8px);
+    .brand-box {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 38px;
     }
 
-    .ig-icon {
-      width: 54px;
-      height: 54px;
+    .brand-icon {
+      width: 56px;
+      height: 56px;
       border-radius: 18px;
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      box-shadow: 0 12px 25px rgba(37,99,235,.25);
+    }
+
+    .brand-box h3 {
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .brand-box span {
+      color: #2563eb;
+    }
+
+    .side-menu,
+    .platform-item {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 26px;
-      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf);
-      box-shadow: 0 14px 30px rgba(214,41,118,.35);
-    }
-
-    .btn {
-      border-radius: 999px;
-      font-weight: 800;
-      padding-left: 22px;
-      padding-right: 22px;
-    }
-
-    .btn-ig {
-      color: white;
-      border: none;
-      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf);
-      box-shadow: 0 14px 32px rgba(214,41,118,.38);
-    }
-
-    .btn-ig:hover {
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .btn-soft {
-      background: rgba(255,255,255,.92);
-      border: none;
-      color: #d62976;
-      box-shadow: 0 14px 30px rgba(255,255,255,.25);
-    }
-
-    .avatar-ring {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      padding: 4px;
-      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-    }
-
-    .avatar-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #111827;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      border: 3px solid white;
-    }
-
-    .username-pill {
-      display: inline-block;
-      padding: 9px 15px;
-      border-radius: 999px;
-      font-weight: 900;
-      color: #d62976;
-      background: linear-gradient(135deg, #fff7ed, #fce7f3, #ede9fe);
-    }
-
-    .table-ig thead th {
-      background: #fff1f2;
-      color: #9f1239;
-      border: none;
-      padding: 18px;
-    }
-
-    .table-ig tbody td {
-      padding: 20px 18px;
-      vertical-align: middle;
-    }
-
-    .table-ig tbody tr {
+      gap: 12px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #0f172a;
+      font-weight: 700;
+      margin-bottom: 10px;
       transition: .2s;
     }
 
-    .table-ig tbody tr:hover {
-      background: #fff7ed;
-      transform: scale(1.006);
+    .side-menu:hover,
+    .platform-item:hover {
+      background: #eef5ff;
+      color: #2563eb;
     }
 
-    .form-control, input {
-      border-radius: 18px !important;
-      padding: 14px 18px !important;
-      border: 1px solid #f9a8d4 !important;
-      background: rgba(255,255,255,.9) !important;
+    .side-menu.active {
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      color: #2563eb;
     }
 
-    label {
+    .platform-title {
+      margin: 28px 0 14px;
+      color: #64748b;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .sidebar-card {
+      margin-top: 70px;
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      padding: 30px 24px;
+      text-align: center;
+      border-radius: 24px;
+      color: white;
+      box-shadow: 0 20px 45px rgba(37,99,235,.25);
+    }
+
+    .bell {
+      font-size: 54px;
+      margin-bottom: 10px;
+    }
+
+    .dashboard-content {
+      background: rgba(255,255,255,.55);
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .top-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .menu-btn {
+      border: none;
+      background: white;
+      border-radius: 14px;
+      padding: 12px 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+      font-size: 18px;
+    }
+
+    .top-hero h1 {
+      font-size: 56px;
       font-weight: 900;
-      color: #831843;
+      margin: 24px 0 8px;
+    }
+
+    .top-hero h1 span {
+      color: #2563eb;
+    }
+
+    .top-hero p {
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .hero-icons {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .float-icon {
+      width: 82px;
+      height: 82px;
+      border-radius: 28px;
+      display: grid;
+      place-items: center;
+      font-size: 38px;
+      box-shadow: 0 20px 40px rgba(37,99,235,.18);
+    }
+
+    .instagram {
+      background: white;
+    }
+
+    .user {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #bfdbfe, #60a5fa);
+      font-size: 58px;
+    }
+
+    .tiktok {
+      background: #111827;
+      color: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+
+    .stat-box {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 14px 35px rgba(30,64,175,.10);
+    }
+
+    .stat-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      background: #eef5ff;
+    }
+
+    .stat-logo.dark {
+      background: #111827;
+      color: white;
+    }
+
+    .stat-box h2 {
+      font-weight: 900;
+      margin: 0;
+    }
+
+    .stat-box p {
+      margin: 0;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr 280px 260px;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .platform-switch {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-weight: 800;
+      flex-wrap: wrap;
+    }
+
+    .platform-switch button {
+      border: none;
+      background: white;
+      padding: 13px 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    }
+
+    .platform-switch button.active {
+      color: #2563eb;
+      outline: 2px solid #bfdbfe;
+    }
+
+    .search-box {
+      background: white;
+      border-radius: 16px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-weight: 600;
+      background: transparent;
+    }
+
+    .add-btn {
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      color: white;
+      text-decoration: none;
+      padding: 15px 22px;
+      border-radius: 16px;
+      font-weight: 800;
+      text-align: center;
+      box-shadow: 0 14px 30px rgba(37,99,235,.25);
+      transition: .2s;
+    }
+
+    .add-btn:hover {
+      transform: translateY(-3px);
+      color: white;
+    }
+
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .account-card-new {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 14px 35px rgba(30,64,175,.10);
+      transition: .25s;
+    }
+
+    .account-card-new:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(30,64,175,.15);
+    }
+
+    .profile-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      box-shadow: 0 12px 24px rgba(37,99,235,.25);
+    }
+
+    .account-info h4 {
+      margin: 0;
+      font-weight: 900;
+    }
+
+    .account-info p {
+      margin: 4px 0 0;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .dots {
+      border: none;
+      background: transparent;
+      font-size: 30px;
+      color: #475569;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      background: white;
+      border-radius: 24px;
+      padding: 60px;
+      text-align: center;
+    }
+
+    .footer-info {
+      margin-top: 32px;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .form-page {
+      min-height: 100vh;
+      padding: 50px 20px;
+    }
+
+    .form-hero {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .form-hero h1 {
+      font-size: 56px;
+      font-weight: 900;
+      color: #2563eb;
+    }
+
+    .form-hero p {
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .form-wrapper {
+      max-width: 1050px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 42% 58%;
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0,0,0,.18);
+    }
+
+    .form-left {
+      padding: 60px 40px;
+      color: white;
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+    }
+
+    .big-icon {
+      font-size: 70px;
+      margin-bottom: 20px;
+    }
+
+    .form-left h2 {
+      font-weight: 900;
+    }
+
+    .form-right {
+      padding: 55px;
+    }
+
+    .form-right label {
+      display: block;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .form-right input {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      padding: 14px 18px;
+      border-radius: 16px;
+      margin-bottom: 22px;
+      outline: none;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .cancel-btn,
+    .save-btn {
+      border: none;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 16px;
+      font-weight: 900;
+    }
+
+    .cancel-btn {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .save-btn {
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      color: white;
     }
 
     .custom-toast {
@@ -205,76 +464,95 @@
       border-radius: 24px;
       color: white;
       font-weight: 800;
-      backdrop-filter: blur(14px);
+      background: #111827;
       box-shadow: 0 20px 40px rgba(0,0,0,.25);
       animation: slideIn .5s ease;
     }
 
-    .toast-success {
-      background: linear-gradient(135deg, #111827, #d62976);
-      border-left: 8px solid #fcb045;
-    }
-
     .toast-error {
-      background: linear-gradient(135deg, #7f1d1d, #e11d48);
-      border-left: 8px solid #feda75;
-    }
-
-    .toast-content {
-      font-size: 18px;
+      background: #e11d48;
     }
 
     @keyframes slideIn {
-      from { transform: translateX(120%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+      from {
+        transform: translateX(120%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .account-grid,
+      .stats-grid,
+      .form-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .top-hero {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .top-hero h1 {
+        font-size: 42px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg ig-navbar">
-    <div class="container">
-      <a class="navbar-brand fs-3 brand-gradient" href="{% url 'sosmed:list' %}">
-        ◎ SosmedGram
-      </a>
-      <a class="btn btn-ig" href="{% url 'sosmed:list' %}">
-        Dashboard
-      </a>
-    </div>
-  </nav>
 
-  <div class="toast-container position-fixed top-0 end-0 p-4" style="z-index:9999;">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="custom-toast show mb-3
-          {% if message.tags == 'success' %}toast-success{% elif message.tags == 'error' %}toast-error{% endif %}">
-          <div class="toast-content">{{ message }}</div>
-        </div>
-      {% endfor %}
-    {% endif %}
-  </div>
+<div class="toast-container position-fixed top-0 end-0 p-4" style="z-index:9999;">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="custom-toast show mb-3
+        {% if message.tags == 'error' %}toast-error{% endif %}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
 
-  <main class="container page-shell">
-    {% block contents %}
-    {% endblock contents %}
-  </main>
+{% block contents %}
+{% endblock contents %}
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    function confirmDelete() {
-      return confirm("Yakin ingin menghapus akun ini?");
-    }
+<script>
+  function confirmDelete() {
+    return confirm("Yakin ingin menghapus akun ini?");
+  }
 
-    setTimeout(() => {
-      const toasts = document.querySelectorAll('.custom-toast');
-      toasts.forEach((toast) => {
-        toast.style.transition = "all .5s ease";
-        toast.style.opacity = "0";
-        toast.style.transform = "translateX(120%)";
-        setTimeout(() => toast.remove(), 500);
-      });
-    }, 2500);
-  </script>
+  setTimeout(() => {
+    const toasts = document.querySelectorAll('.custom-toast');
+
+    toasts.forEach((toast) => {
+      toast.style.transition = "all .5s ease";
+      toast.style.opacity = "0";
+      toast.style.transform = "translateX(120%)";
+
+      setTimeout(() => {
+        toast.remove();
+      }, 500);
+    });
+
+  }, 2500);
+</script>
+
 </body>
 </html>

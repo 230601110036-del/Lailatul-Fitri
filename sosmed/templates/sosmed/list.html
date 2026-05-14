@@ -1,243 +1,116 @@
 {% extends "base.html" %}
 
-{% block title %}
-{{ page_title }}
-{% endblock title %}
+{% block title %}{{ page_title }}{% endblock title %}
 
 {% block contents %}
+<div class="app-layout">
 
-<section class="ig-hero mb-5">
-  <div class="row align-items-center position-relative">
-
-    <div class="col-lg-7">
-      <span class="badge bg-light text-danger mb-3 px-3 py-2 rounded-pill">
-        ✨ Instagram Social Dashboard
-      </span>
-
-      <h1 class="display-3 fw-bold mb-3">
-        Manage Your Social Profile
-      </h1>
-
-      <p class="fs-5 opacity-75 mb-4">
-        Kelola akun Instagram dengan tampilan modern, aesthetic, dan interaktif.
-      </p>
-
-      <a class="btn btn-soft btn-lg px-5 py-3"
-         href="{% url 'sosmed:create' %}">
-        + Tambah Akun
-      </a>
+  <aside class="sidebar">
+    <div class="brand-box">
+      <div class="brand-icon">🔗</div>
+      <h3>Social Media<br><span>Hub</span></h3>
     </div>
 
-    <div class="col-lg-5 mt-5 mt-lg-0">
+    <a class="side-menu active" href="{% url 'sosmed:list' %}">👥 Daftar Akun</a>
+    <a class="side-menu" href="{% url 'sosmed:create' %}">➕ Tambah Akun</a>
 
-      <div class="profile-preview">
+    <div class="platform-title">PLATFORM</div>
+    <div class="platform-item">📸 Instagram</div>
+    <div class="platform-item">🎵 TikTok</div>
 
-        <div class="preview-top"></div>
+    <div class="sidebar-card">
+      <div class="bell">🔔</div>
+      <p>Kelola akun dengan mudah dan aman ✨</p>
+    </div>
+  </aside>
 
-        <div class="text-center">
-
-          <div class="avatar-ring mx-auto preview-avatar">
-            <div class="avatar-inner">IG</div>
-          </div>
-
-          <h4 class="fw-bold mt-3 mb-1">SosmedGram</h4>
-
-          <p class="opacity-75 mb-3">@social_dashboard</p>
-
-          <div class="d-flex justify-content-center gap-4">
-
-            <div>
-              <h5 class="fw-bold mb-0">{{ semua_akun|length }}</h5>
-              <small>Accounts</small>
-            </div>
-
-            <div>
-              <h5 class="fw-bold mb-0">Active</h5>
-              <small>Status</small>
-            </div>
-
-            <div>
-              <h5 class="fw-bold mb-0">IG</h5>
-              <small>Platform</small>
-            </div>
-
-          </div>
-
-        </div>
-
+  <main class="dashboard-content">
+    <section class="top-hero">
+      <div>
+        <button class="menu-btn">☰</button>
+        <h1>Daftar <span>Akun</span></h1>
+        <p>Kelola semua akun sosial media Anda</p>
       </div>
 
-    </div>
+      <div class="hero-icons">
+        <div class="float-icon instagram">📸</div>
+        <div class="float-icon user">👤</div>
+        <div class="float-icon tiktok">🎵</div>
+      </div>
+    </section>
 
-  </div>
-</section>
-
-<div class="row g-4 mb-5">
-
-  <div class="col-md-4">
-    <div class="ig-stat">
-
-      <div class="d-flex align-items-center gap-3">
-
-        <div class="ig-icon">👥</div>
-
+    <section class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-logo">📸</div>
         <div>
-          <p class="text-muted mb-1">Total Akun</p>
-          <h2 class="fw-bold mb-0">{{ semua_akun|length }}</h2>
+          <h2>{{ semua_akun|length }}</h2>
+          <p>Total Akun Instagram</p>
         </div>
-
+        <div class="mini-chart"></div>
       </div>
 
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="ig-stat">
-
-      <div class="d-flex align-items-center gap-3">
-
-        <div class="ig-icon">📸</div>
-
+      <div class="stat-box">
+        <div class="stat-logo dark">🔥</div>
         <div>
-          <p class="text-muted mb-1">Jenis Data</p>
-          <h2 class="fw-bold mb-0">Profile</h2>
+          <h2>Aktif</h2>
+          <p>Status Data</p>
         </div>
+        <div class="mini-chart"></div>
+      </div>
+    </section>
 
+    <section class="toolbar">
+      <div class="platform-switch">
+        <span>Pilih Platform</span>
+        <button class="active">📸 Instagram</button>
+        <button>🎵 TikTok</button>
       </div>
 
-    </div>
-  </div>
+      <form method="GET" class="search-box">
+        <span>🔍</span>
+        <input type="text" name="q" placeholder="Cari akun Instagram..." value="{{ keyword|default:'' }}">
+      </form>
 
-  <div class="col-md-4">
-    <div class="ig-stat">
+      <a href="{% url 'sosmed:create' %}" class="add-btn">＋ Tambah Akun Instagram</a>
+    </section>
 
-      <div class="d-flex align-items-center gap-3">
-
-        <div class="ig-icon">🚀</div>
-
-        <div>
-          <p class="text-muted mb-1">Platform</p>
-          <h2 class="fw-bold mb-0">Instagram</h2>
+    <section class="account-grid">
+      {% for akun in semua_akun %}
+      <div class="account-card-new">
+        <div class="profile-circle">
+          {{ akun.nama_depan|first|upper }}
         </div>
 
-      </div>
+        <div class="account-info">
+          <h4>{{ akun.nama_depan }} {{ akun.nama_belakang }}</h4>
+          <p>@{{ akun.username }}</p>
+        </div>
 
+        <div class="dropdown">
+          <button class="dots" data-bs-toggle="dropdown">⋮</button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="{% url 'sosmed:update' akun.id %}">✏️ Ubah</a>
+            </li>
+            <li>
+              <a class="dropdown-item text-danger" onclick="return confirmDelete()" href="{% url 'sosmed:delete' akun.id %}">🗑️ Hapus</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% empty %}
+      <div class="empty-state">
+        <h3>📭 Belum ada akun</h3>
+        <p>Tambahkan akun Instagram pertama kamu.</p>
+        <a href="{% url 'sosmed:create' %}" class="add-btn">Tambah Akun Pertama</a>
+      </div>
+      {% endfor %}
+    </section>
+
+    <div class="footer-info">
+      Menampilkan {{ semua_akun|length }} akun Instagram
     </div>
-  </div>
+  </main>
 
 </div>
-
-<div class="section-title mb-4">
-
-  <span class="badge bg-light text-danger rounded-pill px-3 py-2">
-    📋 Account Collection
-  </span>
-
-  <h2 class="fw-bold mt-3 mb-1">
-    Daftar Akun Sosial Media
-  </h2>
-
-  <p class="text-light opacity-75">
-    Data akun ditampilkan dalam bentuk kartu modern.
-  </p>
-
-</div>
-
-<div class="row g-4">
-
-  {% for akun in semua_akun %}
-
-  <div class="col-lg-4 col-md-6">
-
-    <div class="account-card">
-
-      <div class="account-cover"></div>
-
-      <div class="account-body text-center">
-
-        <div class="avatar-ring mx-auto account-avatar">
-
-          <div class="avatar-inner">
-            {{ akun.nama_depan|first|upper }}
-          </div>
-
-        </div>
-
-        <h4 class="fw-bold mt-3 mb-1">
-          {{ akun.nama_depan }} {{ akun.nama_belakang }}
-        </h4>
-
-        <span class="username-pill">
-          @{{ akun.username }}
-        </span>
-
-        <div class="account-meta mt-4">
-
-          <div>
-            <strong>{{ forloop.counter }}</strong>
-            <span>No</span>
-          </div>
-
-          <div>
-            <strong>IG</strong>
-            <span>Platform</span>
-          </div>
-
-          <div>
-            <strong>Active</strong>
-            <span>Status</span>
-          </div>
-
-        </div>
-
-        <div class="d-flex justify-content-center gap-2 mt-4">
-
-          <a class="btn btn-warning btn-sm px-4"
-             href="{% url 'sosmed:update' akun.id %}">
-            ✏️ Ubah
-          </a>
-
-          <a class="btn btn-danger btn-sm px-4"
-             onclick="return confirmDelete()"
-             href="{% url 'sosmed:delete' akun.id %}">
-            🗑️ Hapus
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  {% empty %}
-
-  <div class="col-12">
-
-    <div class="ig-card text-center p-5">
-
-      <div class="fs-1 mb-3">📭</div>
-
-      <h3 class="fw-bold">
-        Belum ada akun
-      </h3>
-
-      <p class="text-muted">
-        Tambahkan akun Instagram pertama kamu.
-      </p>
-
-      <a class="btn btn-ig"
-         href="{% url 'sosmed:create' %}">
-        Tambah Akun Pertama
-      </a>
-
-    </div>
-
-  </div>
-
-  {% endfor %}
-
-</div>
-
 {% endblock contents %}

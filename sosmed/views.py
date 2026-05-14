@@ -20,17 +20,21 @@ def create(request):
 
     return render(request, 'sosmed/create.html', context)
 
-
 def list_instagram(request):
-    semua_akun = Instagram.objects.all()
+    keyword = request.GET.get('q')
+
+    if keyword:
+        semua_akun = Instagram.objects.filter(username__icontains=keyword)
+    else:
+        semua_akun = Instagram.objects.all()
 
     context = {
         'page_title': 'Sosial Media',
         'semua_akun': semua_akun,
+        'keyword': keyword,
     }
 
     return render(request, 'sosmed/list.html', context)
-
 
 def update(request, update_id):
     akun_update = Instagram.objects.get(id=update_id)
