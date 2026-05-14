@@ -708,10 +708,8 @@
       }
 
       .top-hero {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-        margin-bottom: 28px;
+        display: block;
+        margin-bottom: 24px;
       }
 
       .menu-btn {
@@ -719,39 +717,43 @@
         height: 58px;
         border-radius: 18px;
         font-size: 26px;
-        margin-bottom: 22px;
+        margin-bottom: 30px;
       }
 
       .top-hero h1 {
-        font-size: 52px;
+        font-size: 44px;
         line-height: 1;
         margin: 0 0 12px;
       }
 
       .top-hero p {
-        font-size: 18px;
+        font-size: 17px;
         line-height: 1.5;
-        max-width: 330px;
+        max-width: 300px;
+        margin-bottom: 26px;
       }
 
       .hero-icons {
         width: 100%;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 1fr;
+        align-items: center;
         gap: 12px;
-        margin-top: 10px;
+        margin-top: 18px;
       }
 
       .float-icon {
-        width: 78px;
-        height: 78px;
+        width: 82px;
+        height: 82px;
         border-radius: 24px;
         font-size: 34px;
+        justify-self: center;
       }
 
       .float-icon.user {
         width: 118px;
         height: 118px;
-        font-size: 54px;
+        font-size: 52px;
       }
 
       .stats-grid {
@@ -864,6 +866,38 @@
 
       .sidebar.show {
         left: 14px;
+      }
+
+      .dashboard-content {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .stat-box {
+        min-width: 0;
+        padding: 16px;
+        border-radius: 22px;
+      }
+
+      .stat-logo {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+      }
+
+      .stat-box h2 {
+        font-size: 28px;
+      }
+
+      .stat-box p {
+        font-size: 13px;
+        line-height: 1.3;
       }
     }
   </style>
