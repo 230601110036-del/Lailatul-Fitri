@@ -519,6 +519,140 @@
       background: #e11d48;
     }
 
+    /* ===== PREMIUM 3D EFFECT ===== */
+
+    .dashboard-content {
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(16px);
+
+      box-shadow:
+        25px 25px 60px rgba(37,99,235,.12),
+        -12px -12px 35px rgba(255,255,255,.92),
+        inset 0 1px 0 rgba(255,255,255,.95);
+
+      border: 1px solid rgba(255,255,255,.8);
+    }
+
+    /* ===== HERO ===== */
+
+    .top-hero h1 {
+      font-size: 78px;
+      font-weight: 1000;
+      letter-spacing: -3px;
+      line-height: .95;
+
+      text-shadow:
+        0 4px 18px rgba(37,99,235,.18);
+    }
+
+    .top-hero h1 span {
+      background: linear-gradient(135deg,#2563eb,#60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .top-hero p {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* ===== HERO ICON ===== */
+
+    .float-icon {
+      transform: perspective(900px) rotateX(8deg);
+
+      box-shadow:
+        18px 20px 45px rgba(37,99,235,.22),
+        -10px -10px 30px rgba(255,255,255,.9),
+        inset 0 1px 0 rgba(255,255,255,.95);
+
+      transition: .35s;
+    }
+
+    .float-icon:hover {
+      transform:
+        perspective(900px)
+        translateY(-10px)
+        rotateX(6deg)
+        scale(1.05);
+    }
+
+    /* ===== CARD ===== */
+
+    .stat-box,
+    .account-card-new,
+    .search-box,
+    .platform-switch a,
+    .add-btn,
+    .menu-btn {
+      border: 1px solid rgba(255,255,255,.7);
+
+      box-shadow:
+        14px 18px 40px rgba(15,23,42,.08),
+        -10px -10px 25px rgba(255,255,255,.95),
+        inset 0 1px 0 rgba(255,255,255,.95);
+
+      transition: .3s ease;
+    }
+
+    /* ===== HOVER ===== */
+
+    .stat-box:hover,
+    .account-card-new:hover,
+    .platform-switch a:hover,
+    .add-btn:hover {
+      transform:
+        perspective(1000px)
+        translateY(-8px)
+        scale(1.01);
+
+      box-shadow:
+        22px 30px 55px rgba(37,99,235,.18),
+        -12px -12px 30px rgba(255,255,255,.95);
+    }
+
+    /* ===== PROFILE ===== */
+
+    .profile-circle {
+      box-shadow:
+        0 18px 35px rgba(37,99,235,.30),
+        inset 0 2px 6px rgba(255,255,255,.35);
+    }
+
+    /* ===== BUTTON ===== */
+
+    .add-btn,
+    .search-btn {
+      background: linear-gradient(135deg,#2563eb,#3b82f6);
+
+      box-shadow:
+        0 18px 35px rgba(37,99,235,.35),
+        inset 0 1px 0 rgba(255,255,255,.35);
+    }
+
+    /* ===== SIDEBAR ===== */
+
+    .sidebar {
+      backdrop-filter: blur(18px);
+
+      box-shadow:
+        25px 25px 60px rgba(15,23,42,.12),
+        inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    /* ===== DARK MODE ===== */
+
+    .dark-mode .dashboard-content,
+    .dark-mode .sidebar,
+    .dark-mode .stat-box,
+    .dark-mode .account-card-new,
+    .dark-mode .search-box,
+    .dark-mode .platform-switch a {
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
     @keyframes slideIn {
       from {
         transform: translateX(120%);
