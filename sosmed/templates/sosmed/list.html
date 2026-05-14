@@ -161,21 +161,21 @@
       {% empty %}
 
       <div class="empty-state">
-        <h3>📭 Belum ada akun</h3>
+        {% if keyword %}
+          <h3>🔍 Akun tidak ditemukan</h3>
+          <p>Tidak ada akun dengan kata kunci "{{ keyword }}".</p>
 
-        <p>
-          Belum ada akun
-          {% if platform == 'tiktok' %}
-            TikTok
-          {% else %}
-            Instagram
-          {% endif %}
-          yang tersimpan.
-        </p>
+          <a href="{% url 'sosmed:list' %}?platform={{ platform }}" class="add-btn">
+            Reset Pencarian
+          </a>
+        {% else %}
+          <h3>📭 Belum ada akun</h3>
+          <p>Belum ada akun {{ platform }} yang tersimpan.</p>
 
-        <a href="{% url 'sosmed:create' %}" class="add-btn">
-          Tambah Akun Pertama
-        </a>
+          <a href="{% url 'sosmed:create' %}" class="add-btn">
+            Tambah Akun Pertama
+          </a>
+        {% endif %}
       </div>
 
       {% endfor %}
