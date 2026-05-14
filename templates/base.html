@@ -223,9 +223,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    function confirmDelete() {
-      return confirm("Yakin ingin menghapus akun ini?");
-    }
-  </script>
+  setTimeout(() => {
+    const toasts = document.querySelectorAll('.custom-toast');
+
+    toasts.forEach((toast) => {
+      toast.style.transition = "all .5s ease";
+      toast.style.opacity = "0";
+      toast.style.transform = "translateX(120%)";
+
+      setTimeout(() => {
+        toast.remove();
+      }, 500);
+    });
+
+  }, 2500); // 2.5 detik
+</script>
 </body>
 </html>
