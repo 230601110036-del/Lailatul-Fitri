@@ -9,40 +9,74 @@
 
   <aside class="sidebar">
     <div class="brand-box">
-      <div class="brand-icon">🔗</div>
+      <div class="brand-icon">
+        <i class="fa-solid fa-share-nodes"></i>
+      </div>
       <h3>Social Media<br><span>Hub</span></h3>
     </div>
 
-    <a class="side-menu active" href="{% url 'sosmed:list' %}">👥 Daftar Akun</a>
-    <a class="side-menu" href="{% url 'sosmed:create' %}">➕ Tambah Akun</a>
+    <a class="side-menu active" href="{% url 'sosmed:list' %}">
+      <i class="fa-solid fa-users"></i> Daftar Akun
+    </a>
+
+    <a class="side-menu" href="{% url 'sosmed:create' %}">
+      <i class="fa-solid fa-plus"></i> Tambah Akun
+    </a>
 
     <div class="platform-title">PLATFORM</div>
 
-    <a class="platform-item" href="?platform=instagram">📸 Instagram</a>
-    <a class="platform-item" href="?platform=tiktok">🎵 TikTok</a>
+    <a class="platform-item" href="?platform=instagram">
+      <i class="fa-brands fa-instagram"></i> Instagram
+    </a>
+
+    <a class="platform-item" href="?platform=tiktok">
+      <i class="fa-brands fa-tiktok"></i> TikTok
+    </a>
 
     <div class="platform-title">PENGATURAN</div>
 
     <div class="setting-box">
       <p class="fw-bold mb-3">Mode Tampilan</p>
-      <button onclick="toggleTheme()">🌙 Gelap / Terang</button>
+      <button onclick="toggleTheme()">
+        <i class="fa-solid fa-circle-half-stroke"></i> Gelap / Terang
+      </button>
     </div>
   </aside>
 
   <main class="dashboard-content">
 
-    <section class="top-hero">
-      <div class="top-hero-left">
-        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <section class="top-bar">
+      <div class="hero-title">
+        <button class="menu-btn" onclick="toggleSidebar()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
 
         <h1>Daftar <span>Akun</span></h1>
         <p>Kelola semua akun sosial media Anda</p>
       </div>
 
-      <div class="hero-icons">
-        <div class="float-icon instagram">📸</div>
-        <div class="float-icon user">👤</div>
-        <div class="float-icon tiktok">🎵</div>
+      <div class="top-actions dropdown">
+        <button class="notif-btn" data-bs-toggle="dropdown">
+          <i class="fa-solid fa-bell"></i>
+
+          {% if messages %}
+            <span class="notif-dot"></span>
+          {% endif %}
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end notification-menu">
+          {% if messages %}
+            {% for message in messages %}
+              <li class="notification-item">
+                {{ message }}
+              </li>
+            {% endfor %}
+          {% else %}
+            <li class="notification-empty">
+              Belum ada notifikasi baru
+            </li>
+          {% endif %}
+        </ul>
       </div>
     </section>
 
@@ -50,9 +84,9 @@
       <div class="stat-box">
         <div class="stat-logo">
           {% if platform == 'tiktok' %}
-            🎵
+            <i class="fa-brands fa-tiktok"></i>
           {% else %}
-            📸
+            <i class="fa-brands fa-instagram"></i>
           {% endif %}
         </div>
 
@@ -70,7 +104,10 @@
       </div>
 
       <div class="stat-box">
-        <div class="stat-logo dark">🔥</div>
+        <div class="stat-logo dark">
+          <i class="fa-solid fa-fire"></i>
+        </div>
+
         <div>
           <h2>Aktif</h2>
           <p>Status Data</p>
@@ -83,17 +120,17 @@
       <div class="platform-switch">
         <a href="?platform=instagram"
            class="{% if platform == 'instagram' %}active{% endif %}">
-          📸 Instagram
+          <i class="fa-brands fa-instagram"></i> Instagram
         </a>
 
         <a href="?platform=tiktok"
            class="{% if platform == 'tiktok' %}active{% endif %}">
-          🎵 TikTok
+          <i class="fa-brands fa-tiktok"></i> TikTok
         </a>
       </div>
 
       <form method="GET" class="search-box">
-        <span>🔍</span>
+        <i class="fa-solid fa-magnifying-glass"></i>
 
         <input type="hidden" name="platform" value="{{ platform }}">
 
@@ -107,7 +144,7 @@
       </form>
 
       <a href="{% url 'sosmed:create' %}" class="add-btn">
-        ＋ Tambah Akun
+        <i class="fa-solid fa-plus"></i> Tambah Akun
       </a>
 
     </section>
@@ -128,21 +165,22 @@
 
           <span class="platform-badge">
             {% if akun.platform == 'tiktok' %}
-              🎵 TikTok
+              <i class="fa-brands fa-tiktok"></i> TikTok
             {% else %}
-              📸 Instagram
+              <i class="fa-brands fa-instagram"></i> Instagram
             {% endif %}
           </span>
         </div>
 
         <div class="dropdown">
-          <button class="dots" data-bs-toggle="dropdown">⋮</button>
+          <button class="dots" data-bs-toggle="dropdown">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
 
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item"
-                 href="{% url 'sosmed:update' akun.id %}">
-                ✏️ Ubah
+              <a class="dropdown-item" href="{% url 'sosmed:update' akun.id %}">
+                <i class="fa-solid fa-pen-to-square"></i> Ubah
               </a>
             </li>
 
@@ -150,7 +188,7 @@
               <a class="dropdown-item text-danger"
                  onclick="return confirmDelete()"
                  href="{% url 'sosmed:delete' akun.id %}">
-                🗑️ Hapus
+                <i class="fa-solid fa-trash"></i> Hapus
               </a>
             </li>
           </ul>
@@ -162,14 +200,14 @@
 
       <div class="empty-state">
         {% if keyword %}
-          <h3>🔍 Akun tidak ditemukan</h3>
+          <h3>Akun tidak ditemukan</h3>
           <p>Tidak ada akun dengan kata kunci "{{ keyword }}".</p>
 
           <a href="{% url 'sosmed:list' %}?platform={{ platform }}" class="add-btn">
             Reset Pencarian
           </a>
         {% else %}
-          <h3>📭 Belum ada akun</h3>
+          <h3>Belum ada akun</h3>
           <p>Belum ada akun {{ platform }} yang tersimpan.</p>
 
           <a href="{% url 'sosmed:create' %}" class="add-btn">
