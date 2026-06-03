@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
 
-application = Flask(__name__)
+app = Flask(__name__)
 
-@application.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
 
     if request.method == 'POST':
@@ -19,9 +19,9 @@ def index():
 
     return render_template('form.html')
 
-@application.route('/ticket')
+@app.route('/ticket')
 def ticket():
     return render_template('ticket.html')
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    app.run(debug=True)
