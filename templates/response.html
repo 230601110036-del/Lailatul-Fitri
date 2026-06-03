@@ -11,11 +11,10 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-
     height:100vh;
 
     display:flex;
@@ -25,31 +24,66 @@ body{
     background-image:url("{{ url_for('static', filename='bg.jpg') }}");
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
 }
 
-.popup{
+.container{
 
     width:600px;
 
-    background:white;
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(8px);
 
-    padding:40px;
+    padding:50px;
 
-    border-radius:15px;
+    border-radius:20px;
 
     text-align:center;
 
-    box-shadow:0 0 20px rgba(0,0,0,.3);
+    box-shadow:
+    0 0 15px #ff0000,
+    0 0 30px rgba(255,0,0,0.5);
 }
 
 h2{
     color:#ff3333;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 p{
+    color:white;
     font-size:18px;
-    margin:10px 0;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:14px 30px;
+
+    background:linear-gradient(
+        to right,
+        #ff0000,
+        #ff4d4d
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    opacity:0.9;
 }
 
 </style>
@@ -57,30 +91,24 @@ p{
 
 <body>
 
-<div class="popup">
+<div class="container">
 
     <h2>Selamat Datang di Travel Connect</h2>
 
     <p>
-        Terima kasih telah bergabung dengan kami.
+        Data Anda berhasil terdaftar.
     </p>
 
     <p>
-        Mulailah perjalanan Anda dengan menjelajahi
-        berbagai pilihan tiket yang tersedia.
+        Siapkan perjalanan impian Anda dan temukan
+        tiket terbaik hanya dalam beberapa langkah.
     </p>
 
+    <a href="/ticket" class="btn">
+        Mulai Pemesanan
+    </a>
+
 </div>
-
-<script>
-
-setTimeout(function(){
-
-    window.location.href = "/ticket";
-
-},3000);
-
-</script>
 
 </body>
 </html>
