@@ -86,6 +86,10 @@ p{
     opacity:0.9;
 }
 
+strong{
+    color:#ff6666;
+}
+
 </style>
 </head>
 
@@ -93,7 +97,11 @@ p{
 
 <div class="container">
 
-    <h2>Selamat Datang di Travel Connect</h2>
+    <h2>🎫 Selamat Datang di Travel Connect</h2>
+
+    <p>
+        Halo <strong>{{ nama }}</strong>,
+    </p>
 
     <p>
         Data Anda berhasil terdaftar.
@@ -105,8 +113,10 @@ p{
     </p>
 
     <button class="btn" id="mulaiBtn">
-      Mulai Pemesanan
+        Mulai Pemesanan
     </button>
+
+</div>
 
 </div>
 
@@ -114,7 +124,29 @@ p{
 
 const mulaiBtn = document.querySelector('#mulaiBtn');
 
+const nama = "{{ nama }}";
+
+console.log(`
+========================================
+         HALAMAN RESPONSE
+========================================
+
+🎫 Selamat Datang di Travel Connect
+
+Pengguna :
+${nama}
+
+Data Anda berhasil terdaftar.
+
+Tekan tombol [Mulai Pemesanan]
+untuk melanjutkan ke pencarian tiket.
+
+========================================
+`);
+
 mulaiBtn.addEventListener('click', () => {
+
+    console.log("Navigasi ke halaman pemesanan tiket...");
 
     window.location.href = '/ticket';
 

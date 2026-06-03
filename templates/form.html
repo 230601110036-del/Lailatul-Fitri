@@ -179,10 +179,33 @@ form.addEventListener('submit', (event) => {
     const namaBelakang =
         document.querySelector('[name="namaBelakang"]').value;
 
-    const pesan =
-        `${namaDepan} ${namaBelakang}, data berhasil dikirim`;
+    const pelanggan = {
+        namaDepan,
+        namaBelakang
+    };
 
-    console.log(pesan);
+    console.log(`
+========================================
+      HALAMAN SELAMAT DATANG
+========================================
+
+🎫 Selamat Datang di Travel Connect
+
+Nama Pengguna :
+${namaDepan} ${namaBelakang}
+
+Data Anda berhasil terdaftar.
+
+Siapkan perjalanan impian Anda dan
+temukan tiket terbaik hanya dalam
+beberapa langkah.
+
+[Mulai Pemesanan]
+
+========================================
+    `);
+
+    console.log("Data Pelanggan:", pelanggan);
 
 });
 
