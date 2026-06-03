@@ -104,11 +104,23 @@ p{
         tiket terbaik hanya dalam beberapa langkah.
     </p>
 
-    <a href="/ticket" class="btn">
-        Mulai Pemesanan
-    </a>
+    <button class="btn" id="mulaiBtn">
+      Mulai Pemesanan
+    </button>
 
 </div>
+
+<script>
+
+const mulaiBtn = document.querySelector('#mulaiBtn');
+
+mulaiBtn.addEventListener('click', () => {
+
+    window.location.href = '/ticket';
+
+});
+
+</script>
 
 </body>
 </html>

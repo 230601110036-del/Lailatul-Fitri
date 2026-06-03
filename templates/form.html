@@ -141,7 +141,7 @@ button:hover{
         Booking Ticket System
     </p>
 
-    <form action="/" method="post">
+    <form action="/" method="post" id="travelForm">
 
         <label>Nama Depan</label>
 
@@ -166,6 +166,27 @@ button:hover{
     </form>
 
 </div>
+
+<script>
+
+const form = document.querySelector('#travelForm');
+
+form.addEventListener('submit', (event) => {
+
+    const namaDepan =
+        document.querySelector('[name="namaDepan"]').value;
+
+    const namaBelakang =
+        document.querySelector('[name="namaBelakang"]').value;
+
+    const pesan =
+        `${namaDepan} ${namaBelakang}, data berhasil dikirim`;
+
+    console.log(pesan);
+
+});
+
+</script>
 
 </body>
 </html>
