@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Travel Connect</title>
+<title>TRAVEL CONNECT</title>
 
 <style>
 
@@ -11,43 +11,38 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    height:100vh;
-
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
 
-    background-image:url("{{ url_for('static', filename='bg.jpg') }}");
+    background-image:url("/static/bg.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
 }
 
 .container{
+    width:700px;
 
-    width:450px;
+    background:rgba(70,70,70,0.9);
 
-    background:rgba(0,0,0,0.65);
-    backdrop-filter:blur(8px);
+    border-radius:35px;
 
-    padding:100px 40px 40px;
-
-    border-radius:25px;
+    padding:120px 60px 60px;
 
     position:relative;
 
     box-shadow:
-    0 0 15px #ff0000,
-    0 0 30px rgba(255,0,0,0.5);
-
+    0 0 20px rgba(255,0,0,.7),
+    0 0 40px rgba(255,0,0,.5);
 }
 
 .airplane{
-
     width:280px;
 
     position:absolute;
@@ -57,53 +52,51 @@ body{
 
     transform:translateX(-50%);
 
-    filter:
-    drop-shadow(0 0 10px red)
-    drop-shadow(0 0 20px red);
-
+    z-index:10;
 }
 
 h1{
     text-align:center;
     color:#ff3333;
-    margin-bottom:8px;
+    font-size:55px;
+    margin-bottom:10px;
 }
 
 .subtitle{
     text-align:center;
     color:white;
-    margin-bottom:25px;
+    font-size:24px;
+    margin-bottom:40px;
 }
 
 label{
     display:block;
     color:white;
-    margin-bottom:6px;
-    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+    margin-top:20px;
+    margin-bottom:10px;
 }
 
 input{
-
     width:100%;
-    padding:12px;
+    padding:15px;
 
     border:none;
-    border-radius:10px;
+    border-radius:15px;
 
-    outline:none;
-
-    font-size:14px;
+    font-size:18px;
 }
 
 button{
-
     width:100%;
-    padding:12px;
 
-    margin-top:25px;
+    margin-top:40px;
+
+    padding:15px;
 
     border:none;
-    border-radius:25px;
+    border-radius:50px;
 
     background:linear-gradient(
         to right,
@@ -112,7 +105,8 @@ button{
     );
 
     color:white;
-    font-size:16px;
+
+    font-size:22px;
     font-weight:bold;
 
     cursor:pointer;
@@ -123,17 +117,13 @@ button:hover{
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-    <img
-        src="{{ url_for('static', filename='airplane.png') }}"
-        alt="Airplane"
-        class="airplane">
+    <img src="/static/airplane.png" alt="Airplane" class="airplane">
 
     <h1>TRAVEL CONNECT</h1>
 
@@ -144,7 +134,6 @@ button:hover{
     <form action="/" method="post">
 
         <label>Nama Depan</label>
-
         <input
             type="text"
             name="namaDepan"
@@ -152,7 +141,6 @@ button:hover{
             required>
 
         <label>Nama Belakang</label>
-
         <input
             type="text"
             name="namaBelakang"
