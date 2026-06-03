@@ -19,7 +19,7 @@ def index():
 
     return render_template('form.html')
 
-@app.route('/ticket')
+@application.route('/ticket')
 def ticket():
     return render_template('ticket.html')
 
