@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pencarian Tiket</title>
+
+<style>
+
+body{
+    font-family:Arial, sans-serif;
+
+    background-image:url("{{ url_for('static', filename='bg.jpg') }}");
+    background-size:cover;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+}
+
+.container{
+
+    width:500px;
+
+    background:rgba(255,255,255,.95);
+
+    padding:30px;
+
+    border-radius:15px;
+}
+
+h2{
+    text-align:center;
+    color:#ff3333;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+}
+
+input{
+
+    width:100%;
+    padding:10px;
+
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#ff3333;
+
+    color:white;
+
+    font-size:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Pencarian Tiket</h2>
+
+    <label>Kota Asal</label>
+    <input type="text">
+
+    <label>Kota Tujuan</label>
+    <input type="text">
+
+    <label>Tanggal</label>
+    <input type="date">
+
+    <label>Jumlah Tiket</label>
+    <input type="number" min="1" value="1">
+
+    <button>Cari Tiket</button>
+
+</div>
+
+</body>
+</html>

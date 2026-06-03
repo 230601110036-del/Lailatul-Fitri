@@ -19,6 +19,9 @@ def index():
 
     return render_template('form.html')
 
+@app.route('/ticket')
+def ticket():
+    return render_template('ticket.html')
 
 if __name__ == '__main__':
     application.run(debug=True)
