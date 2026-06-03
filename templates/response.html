@@ -1,12 +1,104 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-   <title>Demo Text</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Connect</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-image:url("{{ url_for('static', filename='bg.jpg') }}");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.container{
+
+    width:500px;
+
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(8px);
+
+    padding:40px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:
+    0 0 15px #ff0000,
+    0 0 30px rgba(255,0,0,0.5);
+}
+
+h2{
+    color:#ff3333;
+    margin-bottom:20px;
+}
+
+p{
+    color:white;
+    font-size:18px;
+    margin:10px 0;
+}
+
+strong{
+    color:#ff6666;
+}
+
+a{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    text-decoration:none;
+
+    background:#ff3333;
+
+    color:white;
+
+    padding:10px 20px;
+
+    border-radius:10px;
+}
+
+</style>
+
 </head>
+
 <body>
-   <h2>Demo Text</h2>
-   
-   <p><s>trong>{{ nama }}</strong>, 
-   selamat datang di pemrograman Python.</p>
-   
+
+<div class="container">
+
+    <h2>TRAVEL CONNECT</h2>
+
+    <p>
+        Terima kasih,
+        <strong>{{ nama }}</strong>
+    </p>
+
+    <p>
+        Data booking tiket berhasil dikirim.
+    </p>
+
+    <a href="/">Kembali</a>
+
+</div>
+
 </body>
 </html>

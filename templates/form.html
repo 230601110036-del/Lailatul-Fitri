@@ -1,17 +1,171 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-   <title>Demo Text</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Connect</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-image:url("{{ url_for('static', filename='bg.jpg') }}");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.container{
+
+    width:450px;
+
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(8px);
+
+    padding:100px 40px 40px;
+
+    border-radius:25px;
+
+    position:relative;
+
+    box-shadow:
+    0 0 15px #ff0000,
+    0 0 30px rgba(255,0,0,0.5);
+
+}
+
+.car{
+
+    width:280px;
+
+    position:absolute;
+
+    top:-100px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    filter:
+    drop-shadow(0 0 10px red)
+    drop-shadow(0 0 20px red);
+
+}
+
+h1{
+    text-align:center;
+    color:#ff3333;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:white;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    color:white;
+    margin-bottom:6px;
+    margin-top:15px;
+}
+
+input{
+
+    width:100%;
+    padding:12px;
+
+    border:none;
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:14px;
+}
+
+button{
+
+    width:100%;
+    padding:12px;
+
+    margin-top:25px;
+
+    border:none;
+    border-radius:25px;
+
+    background:linear-gradient(
+        to right,
+        #ff0000,
+        #ff4d4d
+    );
+
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+</style>
+
 </head>
+
 <body>
-   <h2>Demo Text</h2>
-   
-   <form action="/" method="post">
-      Nama depan:<br />
-      <input type="text" name="namaDepan" size="25" /><br />
-      Nama belakang:<br />
-      <input type="text" name="namaBelakang" size="25" />
-      <p><input type="submit"  value="Kirim" /></p>
-   </form>
-   
+
+<div class="container">
+
+    <img
+        src="{{ url_for('static', filename='car.png') }}"
+        alt="Car"
+        class="car">
+
+    <h1>TRAVEL CONNECT</h1>
+
+    <p class="subtitle">
+        Booking Ticket System
+    </p>
+
+    <form action="/" method="post">
+
+        <label>Nama Depan</label>
+
+        <input
+            type="text"
+            name="namaDepan"
+            placeholder="Masukkan Nama Depan"
+            required>
+
+        <label>Nama Belakang</label>
+
+        <input
+            type="text"
+            name="namaBelakang"
+            placeholder="Masukkan Nama Belakang"
+            required>
+
+        <button type="submit">
+            Kirim
+        </button>
+
+    </form>
+
+</div>
+
 </body>
 </html>
